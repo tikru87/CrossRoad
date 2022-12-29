@@ -3,13 +3,16 @@ from turtle import Screen
 from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
+from background import BackGround
 
 
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.title("Turtle Roads")
+screen.bgcolor("gray")
 screen.tracer(0)
 
+background = BackGround()
 scoreboard = Scoreboard()
 
 player = Player()
@@ -17,9 +20,7 @@ car_manager = CarManager()
 
 screen.listen()
 
-screen.onkeypress(player.move_left, "a")
-screen.onkeypress(player.move_right, "d")
-screen.onkeypress(player.move_up, "w")
+screen.onkey(player.move_up, "w")
 
 game_is_on = True
 while game_is_on:

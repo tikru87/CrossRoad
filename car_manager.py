@@ -1,8 +1,9 @@
 from turtle import Turtle
 import random
 
-LEFT_SPAWNS = [(-300, -240), (-300, -210), (-300, -180), (-300, -150)]
-RIGHT_SPAWNS = [(300, -90), (300, -60), (300, 1-30), (300, 0)]
+LEFT_SPAWNS = [(-300, -240), (-300, -210), (-300, -180), (-300, -150),
+               (-300, 80), (-300, 110), (-300, 140), (-300, 170)]
+RIGHT_SPAWNS = [(300, -90), (300, -60), (300, -30), (300, 0)]
 COLORS = ["brown", "orange", "yellow", "cyan", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
@@ -22,7 +23,7 @@ class CarManager(Turtle):
             car.forward(STARTING_MOVE_DISTANCE)
 
     def spawn_car_left(self):
-        random_change = random.randint(1, 6)
+        random_change = random.randint(1, 3)
         lane_is_free = True
 
         for car in self.left_cars:
@@ -64,6 +65,6 @@ class CarManager(Turtle):
             self.right_cars.append(new_car)
 
     def increase_difficulty(self):
-        self.move_speed *= 0.9
+        self.move_speed *= 0.7
 
 
