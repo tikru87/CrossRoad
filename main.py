@@ -5,11 +5,18 @@ from car_manager import CarManager
 from scoreboard import Scoreboard
 from background import BackGround
 
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 600
+GAME_TITLE = "Turtle Roads"
+BACKGROUND_COLOR = "gray"
+GOAL_LINE = 280
+COLLISION_DISTANCE = 25
+
 
 screen = Screen()
-screen.setup(width=600, height=600)
-screen.title("Turtle Roads")
-screen.bgcolor("gray")
+screen.setup(SCREEN_WIDTH, SCREEN_HEIGHT)
+screen.title(GAME_TITLE)
+screen.bgcolor(BACKGROUND_COLOR)
 screen.tracer(0)
 
 background = BackGround()
@@ -31,19 +38,19 @@ while game_is_on:
     car_manager.spawn_car_right()
     car_manager.move_right_cars()
 
-    if player.ycor() > 280:
+    if player.ycor() > GOAL_LINE:
         player.reset_position()
         scoreboard.next_level()
         car_manager.increase_difficulty()
 
     for car in car_manager.left_cars:
-        if car.distance(player.pos()) < 20:
+        if car.distance(player.pos()) < COLLISION_DISTANCE:
             player.game_over()
             scoreboard.game_over()
             game_is_on = False
 
     for car in car_manager.right_cars:
-        if car.distance(player.pos()) < 20:
+        if car.distance(player.pos()) < COLLISION_DISTANCE:
             player.game_over()
             scoreboard.game_over()
             game_is_on = False

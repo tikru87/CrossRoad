@@ -4,9 +4,11 @@ import random
 LEFT_SPAWNS = [(-300, -240), (-300, -210), (-300, -180), (-300, -150),
                (-300, 80), (-300, 110), (-300, 140), (-300, 170)]
 RIGHT_SPAWNS = [(300, -90), (300, -60), (300, -30), (300, 0)]
+
 COLORS = ["brown", "orange", "yellow", "cyan", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
+DIFFICULTY_MULTIPLIER = 0.7
 
 
 class CarManager(Turtle):
@@ -65,6 +67,6 @@ class CarManager(Turtle):
             self.right_cars.append(new_car)
 
     def increase_difficulty(self):
-        self.move_speed *= 0.7
+        self.move_speed *= DIFFICULTY_MULTIPLIER
 
 
